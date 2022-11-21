@@ -73,7 +73,7 @@ def upload(request):
         labels = list(string.ascii_lowercase)
         print(labels)
         print(pred.argmax(axis=1))
-        result.result = labels[pred.argmax(axis=1)] #예측결과
+        result.result = labels[pred.argmax(axis=1)[0]] #예측결과
         result.save()
 
         context = {
