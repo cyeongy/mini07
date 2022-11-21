@@ -68,8 +68,11 @@ def upload(request):
         #todo 예측 : 결국 이 결과를 얻기 위해 모든 것을 했다.
         # 예측 결과를 수행해보세요.
 
-        #todo 예측 결과를 DB에 저장한다.
-        result.result = model.predict(img_s) #예측결과
+        #todo 예측 결과를 DB에 저장한다
+        pred = model.predict(img_s)
+        labels = list(string.ascii_lowercase)
+
+        result.result = labels[pred.argmax(axis=1)] #예측결과
         result.save()
 
         context = {
