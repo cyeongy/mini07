@@ -19,6 +19,7 @@ logger = logging.getLogger('mylogger')
 def index(request):
     return render(request, 'language/index.html')
 
+
 def upload(request):
     if request.method == 'POST' and request.FILES['files']:
 
@@ -55,17 +56,18 @@ def upload(request):
 
 
         #todo 크기 조정
-
+        img = cv2.resize(img, (28, 28))
 
         #todo input shape 맞추기
+        img.reshape((28, 28, 1))
 
         #todo 스케일링
-
+        img_s = img / 255.
         #todo 예측 : 결국 이 결과를 얻기 위해 모든 것을 했다.
         # 예측 결과를 수행해보세요.
 
         #todo 예측 결과를 DB에 저장한다.
-        result.result = model.predict(img) #예측결과
+        result.result = model.predict(img_s) #예측결과
         result.save()
 
         context = {
