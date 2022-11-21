@@ -32,7 +32,7 @@ def upload(request):
         class_names = np.array(class_names)
 
         #todo 모델 로딩
-        model_path = os.path.join(settings.MODEL_PATH)# model위치를 setting에 정의해놨으니 활용해서 채워보세요. 위치는 본인이 원하는 다른곳에 해도 됩니다.
+        model_path = os.path.join(settings.MODEL_PATH, 'sign_model.h5')# model위치를 setting에 정의해놨으니 활용해서 채워보세요. 위치는 본인이 원하는 다른곳에 해도 됩니다.
         model = load_model(model_path)
 
 
@@ -42,7 +42,7 @@ def upload(request):
 
         result.answer = request.POST.get('answer')# answer를 채워봅시다.
         print(">>result.answer: ", result.answer)
-        result.image = file# image를 채워봅시다.
+        result.image = file # image를 채워봅시다.
         result.pub_date = timezone.datetime.now()
         result.save()
 
