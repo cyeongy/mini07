@@ -40,7 +40,7 @@ def upload(request):
         # 이때 파일시스템에 저장도 된다.
         result = Result()
         result.answer = # answer를 채워봅시다.
-        result.image = # image를 채워봅시다.
+        result.image = file# image를 채워봅시다.
         result.pub_date = timezone.datetime.now()
         result.save()
 
@@ -48,6 +48,8 @@ def upload(request):
         #todo 흑백으로 읽기
         # model에서 ImageField로 처리된 항목은 ImageFieldFile 객체로 활용됩니다.
         # 해당 객체에는 path를 얻어오는 method가 있습니다.
+        img = cv2.imread(result.image.path, cv2.IMREAD_GRAYSCALE)
+
 
         #todo 크기 조정
 
