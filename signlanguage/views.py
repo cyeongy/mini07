@@ -59,7 +59,7 @@ def upload(request):
         img = cv2.resize(img, (28, 28))
 
         #todo input shape 맞추기
-        img.reshape((28, 28, 1))
+        img.reshape((1, 28, 28, 1))
 
         #todo 스케일링
         img_s = img / 255.
