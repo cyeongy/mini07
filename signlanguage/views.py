@@ -36,6 +36,8 @@ def upload(request):
         model_path = os.path.join(settings.MODEL_DIR, 'sign_model.h5')# model위치를 setting에 정의해놨으니 활용해서 채워보세요. 위치는 본인이 원하는 다른곳에 해도 됩니다.
         model = load_model(model_path)
         print(">> Success load model")
+        print(model.summary())
+        print("-" * 100 + "\n")
 
 
         #todo history 저장을 위해 객체에 담아서 DB에 저장한다.
