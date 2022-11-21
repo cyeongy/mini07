@@ -39,7 +39,9 @@ def upload(request):
         #todo history 저장을 위해 객체에 담아서 DB에 저장한다.
         # 이때 파일시스템에 저장도 된다.
         result = Result()
-        result.answer = # answer를 채워봅시다.
+
+        result.answer = request.POST.get('answer')# answer를 채워봅시다.
+        print(">>result.answer: ", result.answer)
         result.image = file# image를 채워봅시다.
         result.pub_date = timezone.datetime.now()
         result.save()
