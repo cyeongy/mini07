@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'account',
     'book',
     'gallery',
-    'signlanguage',
+    # 'signlanguage',
     'signlanguage.apps.SignlanguageConfig',
 
     'django.contrib.admin',
