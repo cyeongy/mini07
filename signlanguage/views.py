@@ -7,7 +7,7 @@ import numpy as np
 import cv2
 import string
 from keras.models import load_model
-
+import os
 
 # from pybo.model import Result
 from .models import Result
@@ -23,7 +23,7 @@ def upload(request):
     if request.method == 'POST' and request.FILES['files']:
 
         #todo form에서 전송한 파일을 획득한다.
-        file = # Django 과정에서 배웠던 request.FILES 을 활용하세요.
+        file = request.FILES['files'] # Django 과정에서 배웠던 request.FILES 을 활용하세요.
 
 
         # logger.error('file', file)
@@ -32,7 +32,7 @@ def upload(request):
         class_names = np.array(class_names)
 
         #todo 모델 로딩
-        model_path = # model위치를 setting에 정의해놨으니 활용해서 채워보세요. 위치는 본인이 원하는 다른곳에 해도 됩니다.
+        model_path = os.path.join(settings.MODEL_PATH)# model위치를 setting에 정의해놨으니 활용해서 채워보세요. 위치는 본인이 원하는 다른곳에 해도 됩니다.
         model = load_model(model_path)
 
 
@@ -53,6 +53,7 @@ def upload(request):
 
         #todo 크기 조정
 
+
         #todo input shape 맞추기
 
         #todo 스케일링
@@ -61,7 +62,7 @@ def upload(request):
         # 예측 결과를 수행해보세요.
 
         #todo 예측 결과를 DB에 저장한다.
-        result.result = #예측결과
+        result.result = model.predict(img) #예측결과
         result.save()
 
         context = {
